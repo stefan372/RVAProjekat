@@ -1,4 +1,5 @@
 using System;
+using System;
 
 namespace RVAProj.Models
 {
@@ -13,6 +14,11 @@ namespace RVAProj.Models
 
         public void AzurirajStanje()
         {
+            if (Stanje == StanjeProjekta.Obustavljen)
+            {
+                return;
+            }
+
             if (BrojZavrsenihZadataka >= BrojZadataka)
             {
                 Stanje = StanjeProjekta.Zavrsen;
@@ -25,10 +31,7 @@ namespace RVAProj.Models
                 return;
             }
 
-            if (Stanje != StanjeProjekta.Obustavljen)
-            {
-                Stanje = StanjeProjekta.URazvoju;
-            }
+            Stanje = StanjeProjekta.URazvoju;
         }
     }
 }

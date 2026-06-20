@@ -15,42 +15,26 @@ namespace RVAProj.Components
             _komponenta1 = komponenta1;
         }
 
-        public Dictionary<string, List<ProjektnaMetrika>> PrilagodiMetrikeZaPeriod(DateTime datumOd, DateTime datumDo)
+        public Dictionary<string, List<MetrikaZaPrikaz>> PrilagodiMetrikeZaPeriod(DateTime datumOd, DateTime datumDo)
         {
-            return _komponenta1.DohvatiMetrikeZaPeriod(datumOd, datumDo);
-        }
+            var kljuc = string.Format("({0:yyyy-MM-dd}, {1:yyyy-MM-dd})", datumOd, datumDo);
 
-        public Dictionary<string, ProjektnaMetrika> NajviseZavrsenihZadatakaPoProjektu()
-        {
-            return _komponenta1.Metrike
-                .GroupBy(m => m.ProjekatId)
-                .Select(grupa =>
+            var rezultati = _komponenta1.DohvatiMetrikeZaPeriod(datumOd, datumDo);
+            var prikaz = rezultati
+                .Select(m => new MetrikaZaPrikaz
                 {
-                    var najbolja = grupa.OrderByDescending(x => x.BrojZavrsenihZadataka).First();
-                    return new
-                    {
-                        Naziv = _komponenta1.PronadjiNazivProjekta(grupa.Key),
-                        Metrika = najbolja
-                    };
+                    NazivProjekta = _komponenta1.PronadjiNazivProjekta(m.ProjekatId),
+                    BrojZadataka = m.BrojZadataka,
+                    BrojZavrsenihZadataka = m.BrojZavrsenihZadataka,
+                    BrojAngazovanihClanova = m.BrojAngazovanihClanova
                 })
-                .ToDictionary(x => x.Naziv, x => x.Metrika);
+                .ToList();
+
+            return new Dictionary<string, List<MetrikaZaPrikaz>>
+            {
+                { kljuc, prikaz }
+            };
         }
 
-        public Dictionary<string, string> ProsecnoBrojZadatakaPoProjektu()
-        {
-            return _komponenta1.Metrike
-                .GroupBy(m => m.ProjekatId)
-                .Select(grupa => new
-                {
-                    Naziv = _komponenta1.PronadjiNazivProjekta(grupa.Key),
-                    Tekst = string.Format("prosek zadataka = {0:0.00}, predvidjeni rok = {1:yyyy-MM-dd}", grupa.Average(x => x.BrojZadataka), grupa.Max(x => x.RokZavrsetka))
-                })
-                .ToDictionary(x => x.Naziv, x => x.Tekst);
-        }
-
-        public int BrojKasnjenja()
-        {
-            return _komponenta1.Metrike.Count(m => m.Stanje == StanjeProjekta.Kasnjenje);
-        }
     }
 }

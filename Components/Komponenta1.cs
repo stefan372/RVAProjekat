@@ -32,18 +32,11 @@ namespace RVAProj.Components
             get { return _metrike.AsReadOnly(); }
         }
 
-        public Dictionary<string, List<ProjektnaMetrika>> DohvatiMetrikeZaPeriod(DateTime datumOd, DateTime datumDo)
+        public List<ProjektnaMetrika> DohvatiMetrikeZaPeriod(DateTime datumOd, DateTime datumDo)
         {
-            var kljuc = string.Format("{0:yyyy-MM-dd} - {1:yyyy-MM-dd}", datumOd, datumDo);
-
-            var vrednosti = _metrike
+            return _metrike
                 .Where(m => m.RokZavrsetka.Date >= datumOd.Date && m.RokZavrsetka.Date <= datumDo.Date)
                 .ToList();
-
-            return new Dictionary<string, List<ProjektnaMetrika>>
-            {
-                { kljuc, vrednosti }
-            };
         }
 
         public string PronadjiNazivProjekta(Guid projekatId)

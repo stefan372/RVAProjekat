@@ -45,6 +45,7 @@
   <ItemGroup>
     <Compile Include="Components\Komponenta1.cs" />
     <Compile Include="Components\Komponenta2.cs" />
+    <Compile Include="Models\MetrikaZaPrikaz.cs" />
     <Compile Include="Models\ProjektnaMetrika.cs" />
     <Compile Include="Models\SoftverskiProjekat.cs" />
     <Compile Include="Models\StanjeProjekta.cs" />
