@@ -43,13 +43,22 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="EvidencijaProjekata.cs" />
-    <Compile Include="Modeli.cs" />
+    <Compile Include="Components\Komponenta1.cs" />
+    <Compile Include="Components\Komponenta2.cs" />
+    <Compile Include="Models\ProjektnaMetrika.cs" />
+    <Compile Include="Models\SoftverskiProjekat.cs" />
+    <Compile Include="Models\StanjeProjekta.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include=".gitignore" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Services\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
