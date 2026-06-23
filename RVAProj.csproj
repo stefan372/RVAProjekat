@@ -49,6 +49,15 @@
     <Compile Include="Models\ProjektnaMetrika.cs" />
     <Compile Include="Models\SoftverskiProjekat.cs" />
     <Compile Include="Models\StanjeProjekta.cs" />
+    <Compile Include="Patterns\Commands\CommandInvoker.cs" />
+    <Compile Include="Patterns\Commands\DodajMetrikuCommand.cs" />
+    <Compile Include="Patterns\Commands\DodajProjekatCommand.cs" />
+    <Compile Include="Patterns\ICommand.cs" />
+    <Compile Include="Patterns\IObserver.cs" />
+    <Compile Include="Patterns\IStanjeStrategy.cs" />
+    <Compile Include="Patterns\Observers\ConsoleLogger.cs" />
+    <Compile Include="Patterns\Observers\StatistikaObserver.cs" />
+    <Compile Include="Patterns\Strategies\StandardnaStrategija.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -58,8 +67,6 @@
   <ItemGroup>
     <Content Include=".gitignore" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Services\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -1,0 +1,295 @@
+<Project>
+  <Name>Projekat</Name>
+  <ProjectItem type="NClass.DiagramEditor.ClassDiagram.Diagram" assembly="NClass.DiagramEditor, Version=2.4.1823.0, Culture=neutral, PublicKeyToken=null">
+    <Name>Sema</Name>
+    <Language>CSharp</Language>
+    <Entities>
+      <Entity type="Enum">
+        <Name>StanjeProjekta</Name>
+        <Access>Public</Access>
+        <Location left="1052" top="1094" />
+        <Size width="162" height="216" />
+        <Collapsed>False</Collapsed>
+        <Value>URazvoju</Value>
+        <Value>Kasnjenje</Value>
+        <Value>Zavrsen</Value>
+        <Value>Obustavljen</Value>
+      </Entity>
+      <Entity type="Comment">
+        <Text>Command
+Observer
+Strategy</Text>
+        <Location left="60" top="76" />
+        <Size width="160" height="75" />
+      </Entity>
+      <Entity type="Interface">
+        <Name>IObserver</Name>
+        <Access>Public</Access>
+        <Location left="60" top="642" />
+        <Size width="162" height="216" />
+        <Collapsed>False</Collapsed>
+        <Member type="Method">void Update(string Poruka)</Member>
+      </Entity>
+      <Entity type="Interface">
+        <Name>ICommand</Name>
+        <Access>Public</Access>
+        <Location left="892" top="124" />
+        <Size width="162" height="216" />
+        <Collapsed>False</Collapsed>
+        <Member type="Method">void Execute()</Member>
+      </Entity>
+      <Entity type="Interface">
+        <Name>IStanjeStrategy</Name>
+        <Access>Public</Access>
+        <Location left="1532" top="795" />
+        <Size width="162" height="216" />
+        <Collapsed>False</Collapsed>
+        <Member type="Method">void OdrediStanje()</Member>
+      </Entity>
+      <Entity type="Class">
+        <Name>StandardnaStrategija</Name>
+        <Access>Public</Access>
+        <Location left="1532" top="1094" />
+        <Size width="162" height="216" />
+        <Collapsed>False</Collapsed>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>DodajProjekatCommand</Name>
+        <Access>Public</Access>
+        <Location left="770" top="442" />
+        <Size width="162" height="216" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">Komponenta1 _komponenta</Member>
+        <Member type="Field">SoftverskiProjekat _projekat</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>DodajMetrikuCommand</Name>
+        <Access>Public</Access>
+        <Location left="1052" top="445" />
+        <Size width="162" height="216" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">Komponenta1 _komponenta</Member>
+        <Member type="Field">ProjektnaMetrika _metrika</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>SoftverskiProjekat</Name>
+        <Access>Public</Access>
+        <Location left="494" top="1107" />
+        <Size width="162" height="216" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">Guid Id</Member>
+        <Member type="Field">string Naziv</Member>
+        <Member type="Field">string Klijent</Member>
+        <Member type="Field">int BrojClanovaTima</Member>
+        <Member type="Field">string Opis</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>ProjektnaMetrika</Name>
+        <Access>Public</Access>
+        <Location left="1056" top="795" />
+        <Size width="162" height="216" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">Guid ProjekatId</Member>
+        <Member type="Field">DateTime _rokZavrsetka</Member>
+        <Member type="Field">int _brojZadataka</Member>
+        <Member type="Field">int _brojZavrsenihZadataka</Member>
+        <Member type="Field">int _brojAngazovanihClanova</Member>
+        <Member type="Field">IStanjeStrategy _stanjeStrategy</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>MetrikaZaPrikaz</Name>
+        <Access>Public</Access>
+        <Location left="748" top="1107" />
+        <Size width="162" height="216" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">string _nazivProjekta</Member>
+        <Member type="Field">int _brojZadataka</Member>
+        <Member type="Field">int _brojZavrsenihZadataka</Member>
+        <Member type="Field">int _brojAngazovanihClanova</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>Komponenta1</Name>
+        <Access>Public</Access>
+        <Location left="362" top="642" />
+        <Size width="162" height="230" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">List&lt;SoftverskiProjekat&gt; _projekti</Member>
+        <Member type="Field">List&lt;ProjektnaMetrika&gt; _metrike</Member>
+        <Member type="Field">List&lt;IObserver&gt; _observers</Member>
+        <Member type="Method">public void DodajProjekat(SoftverskiProjekat projekat)</Member>
+        <Member type="Method">public void DodajMetriku(ProjektnaMetrika metrika)</Member>
+        <Member type="Method">public void PrijaviObserver(IObserver observer)</Member>
+        <Member type="Method">public void OdjaviObserver(IObserver observer)</Member>
+        <Member type="Method">public void DohvatiMetrikeZaPeriod()</Member>
+        <Member type="Method">public void PronadjiNazivProjekta()</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>Komponenta2</Name>
+        <Access>Public</Access>
+        <Location left="362" top="240" />
+        <Size width="162" height="216" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">Komponenta1 _komponenta1</Member>
+        <Member type="Method">public void PrilagodiMetrikeZaPeriod()</Member>
+        <Member type="Method">public void NajveciBrojZavrsenihZadataka()</Member>
+        <Member type="Method">public void ProsecanBrojZadatakaPoProjekatima()</Member>
+        <Member type="Method">public void BrojKasnjenjaPoProjekatima()</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>ConsoleLogger</Name>
+        <Access>Public</Access>
+        <Location left="58" top="1035" />
+        <Size width="162" height="216" />
+        <Collapsed>False</Collapsed>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>StatistikaObserver</Name>
+        <Access>Public</Access>
+        <Location left="58" top="284" />
+        <Size width="162" height="216" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">int _brojProjekata</Member>
+        <Member type="Field">int _brojMetrika</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>CommandInvoker</Name>
+        <Access>Public</Access>
+        <Location left="1300" top="124" />
+        <Size width="162" height="216" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">List&lt;ICommand&gt; _komande</Member>
+        <Member type="Method">public void DodajKomandu()</Member>
+        <Member type="Method">public void IzvrsiSve()</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+    </Entities>
+    <Relationships>
+      <Relationship type="Realization" first="5" second="4">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+      </Relationship>
+      <Relationship type="Realization" first="6" second="3">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+      </Relationship>
+      <Relationship type="Realization" first="7" second="3">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+      </Relationship>
+      <Relationship type="Association" first="6" second="8">
+        <Label>
+        </Label>
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+      </Relationship>
+      <Relationship type="Association" first="9" second="4">
+        <Label>
+        </Label>
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+      </Relationship>
+      <Relationship type="Association" first="9" second="0">
+        <Label>
+        </Label>
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+      </Relationship>
+      <Relationship type="Association" first="6" second="11">
+        <Label>
+        </Label>
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+      </Relationship>
+      <Relationship type="Association" first="7" second="11">
+        <Label>
+        </Label>
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>1141</X>
+          <Y>735</Y>
+        </BendPoint>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+      </Relationship>
+      <Relationship type="Association" first="11" second="8">
+        <Label>
+        </Label>
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>414</X>
+          <Y>897</Y>
+        </BendPoint>
+        <BendPoint relativeToStartShape="False">
+          <X>414</X>
+          <Y>1234</Y>
+        </BendPoint>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Aggregation</AssociationType>
+      </Relationship>
+      <Relationship type="Association" first="11" second="9">
+        <Label>
+        </Label>
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>560</X>
+          <Y>822</Y>
+        </BendPoint>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Aggregation</AssociationType>
+      </Relationship>
+      <Relationship type="Association" first="11" second="2">
+        <Label>
+        </Label>
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Aggregation</AssociationType>
+      </Relationship>
+      <Relationship type="Association" first="12" second="11">
+        <Label>
+        </Label>
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+      </Relationship>
+      <Relationship type="Realization" first="13" second="2">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+      </Relationship>
+      <Relationship type="Realization" first="14" second="2">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+      </Relationship>
+      <Relationship type="Association" first="15" second="3">
+        <Label>
+        </Label>
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Composition</AssociationType>
+      </Relationship>
+    </Relationships>
+  </ProjectItem>
+</Project>
